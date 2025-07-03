@@ -8,6 +8,8 @@ const laptopSchema = new mongoose.Schema({
   Storage: { type: String, required: true },
   Condition: { type: String,enums:['pre-owned','refurbished'], required: true },
   Price: { type: Number, required: true },  
+  createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Laptops', laptopSchema);
