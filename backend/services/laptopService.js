@@ -1,24 +1,30 @@
-const laptops = require('../models/laptops');
+const laptops = require("../models/laptops");
 
-const createlaptops = async (data, userId) => {
+const createLaptop = async (data, userId) => {
   return await laptops.create({ ...data, createdBy: userId });
 };
 
-const getlaptopss = async () => {
-  return await laptops.find().populate('createdBy', 'name email');
+const getLaptop = async () => {
+  return await laptops.find().populate("createdBy", "name email");
 };
 
-const getlaptopsById = async (id) => {
-  return await laptops.findById(id).populate('createdBy', 'name email');
+const getLaptopById = async (id) => {
+  return await laptops.findById(id).populate("createdBy", "name email");
 };
 
-const updatelaptops = async (id, data) => {
+const updateLaptop = async (id, data) => {
   return await laptops.findByIdAndUpdate(id, data, { new: true });
 };
 
-const deletelaptops = async (id) => {
+const deleteLaptop = async (id) => {
   return await laptops.findByIdAndDelete(id);
 };
 
-module.exports = { createlaptops, getlaptopss, getlaptopsById, updatelaptops, deletelaptops};
-// laptops service logic 
+module.exports = {
+  createLaptop,
+  getLaptop,
+  getLaptopById,
+  updateLaptop,
+  deleteLaptop,
+};
+// laptops service logic
